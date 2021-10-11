@@ -12,7 +12,9 @@
 #include "../includes/linkedlist.h"
 
 int main() {
-    std::cout << "Hello World!" << std::endl;
+    int x = 10, y = 20;
+    std::cout << "Hello, World!" << std::endl;
+    std::cout << x << ", " << y << std::endl;
 
     return 0;
 }
