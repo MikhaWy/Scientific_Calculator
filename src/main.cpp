@@ -1,10 +1,10 @@
-/******************************************
- * Edric, Mikha, Roger
- * Data Structures and ALgorithm
- * Mr. Fikri
- * 
- * Scientific Calculator with Data Structures
- ******************************************/
+/************************************************
+ * Edrick, Mikha, Roger                          *
+ * Data Structures and ALgorithm                *
+ * Mr. Fikri                                    *
+ *                                              *
+ * Scientific Calculator with Data Structures   *
+ ************************************************/
 
 #include <iostream>
 
