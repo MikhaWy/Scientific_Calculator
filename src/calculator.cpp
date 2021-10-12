@@ -28,6 +28,20 @@ double Calculator::arithmetic(const double& a, const double& b, const char& op) 
     }
 }
 
+double Calculator::trigonometry(const double& a, const char& op) const {
+    const double PI = 3.141592654;
+    
+    switch (op) {
+        // 's' is sin, 'c' is cos, 't' is tan
+        case 's': return sin(a * PI / 180); // Change deg to radian
+        case 'c': return cos(a * PI / 180);
+        case 't': return tan(a * PI / 180);
+        default:
+            std::cout << "ERROR: Invalid operator!" << std::endl;
+            exit(EXIT_FAILURE);
+    }
+}
+
 double Calculator::Evaluate(const char* expression) {
     Queue<double> numbers(100); // Stores all the numeric values
     Queue<char> ops(100);       // Stores all the operators
