@@ -3,12 +3,13 @@
 #include <iostream>
 #include <limits.h>
 
-Queue::Queue(unsigned int capacity) {
+template<typename T>
+Queue<T>::Queue(const unsigned int& capacity) {
     this->capacity = capacity;
     this->front = this->size = 0;
 
     this->rear = capacity - 1; // We assign to 'capacity' to get the wrap around during enqueue
-    this->array = new int[capacity];
+    this->array = new T[capacity];
 
     if (array == NULL) {
         std::cout << "ERROR: Failure in allocating memory!" << std::endl;
@@ -16,21 +17,25 @@ Queue::Queue(unsigned int capacity) {
     }
 }
 
-Queue::~Queue() {
+template<typename T>
+Queue<T>::~Queue() {
     free(this->array);
-    std::cout << "Queue Destroyed!" << std::endl;
+    // std::cout << "Queue Destroyed!" << std::endl;
 }
 
-bool Queue::is_empty() const {
+template<typename T>
+bool Queue<T>::IsEmpty() const {
     return (this->size == 0);
 }
 
-bool Queue::is_full() const {
+template<typename T>
+bool Queue<T>::IsFull() const {
     return (this->size == this->capacity);
 }
 
-void Queue::Enqueue(int item) {
-    if (is_full()) {
+template<typename T>
+void Queue<T>::Enqueue(T item) {
+    if (IsFull()) {
         std::cout << "WARNING: Current instance of queue is already full!" << std::endl;
         return;
     }
@@ -40,42 +45,51 @@ void Queue::Enqueue(int item) {
     this->size = this->size + 1;
 }
 
-int Queue::Dequeue() {
-    if (is_empty()) {
+template<typename T>
+T Queue<T>::Dequeue() {
+    if (IsEmpty()) {
         std::cout << "WARNING: Queue is empty!" << std::endl;
-        return INT_MIN;
+        return (T)0;
     }
 
-    int data = this->array[this->front];
+    T data = this->array[this->front];
     this->front = (this->front + 1) % this->capacity; // Wrap around
     this->size = this->size - 1;
     return data;
 }
 
-int Queue::Pop() {
-    if (is_empty()) {
+template<typename T>
+T Queue<T>::Pop() {
+    if (IsEmpty()) {
         std::cout << "WARNING: Queue is empty!" << std::endl;
-        return INT_MIN;
+        return (T)0;
     }
 
-    int data = this->array[this->rear];
+    T data = this->array[this->rear];
     this->rear = this->rear - 1;
     this->size = this->size - 1;
     return data;
 }
 
-int Queue::Front() const {
-    if (is_empty()) {
+template<typename T>
+int Queue<T>::Size() const {
+    return this->size;
+}
+
+template<typename T>
+T Queue<T>::Front() const {
+    if (IsEmpty()) {
         std::cout << "WARNING: Queue is empty!" << std::endl;
-        return INT_MIN;
+        return (T)0;
     }
     return this->array[this->front];
 }
 
-int Queue::Rear() const {
-if (is_empty()) {
+template<typename T>
+T Queue<T>::Rear() const {
+    if (IsEmpty()) {
         std::cout << "WARNING: Queue is empty!" << std::endl;
-        return INT_MIN;
+        return (T)0;
     }
     return this->array[this->rear];
 }

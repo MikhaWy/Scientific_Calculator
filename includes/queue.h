@@ -1,26 +1,29 @@
 #ifndef QUEUE_H 
 #define QUEUE_H 
 
+template<typename T>
 class Queue {
 private:
     int front, rear, size;
     unsigned int capacity;
-    int* array;
+
+    T* array;
 public:
-    Queue(unsigned int capacity);
+    Queue(const unsigned int& capacity);
     ~Queue();
     
-    bool is_full() const;
-    bool is_empty() const;
+    bool IsEmpty() const;
+    bool IsFull() const;
 
-    void Enqueue(int item);
-    int Dequeue();
-    int Pop();
+    void Enqueue(T item);
+    T Dequeue();
+    T Pop();
 
-    int Front() const;
-    int Rear() const;
-private:
-
+    int Size() const;
+    T Front() const;
+    T Rear() const;
 };
+
+#include "../src/queue.cpp"
 
 #endif
