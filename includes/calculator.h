@@ -7,7 +7,6 @@ public:
 private:
     int precedence(const char& op) const;
     double arithmetic(const double& a, const double& b, const char& op) const;
-    double pow(const double& a, const double& n) const;
 };
 
 #endif

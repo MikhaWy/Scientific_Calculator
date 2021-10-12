@@ -7,17 +7,20 @@
  ************************************************/
 
 #include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
 
 #include "../includes/queue.h"
 #include "../includes/linkedlist.h"
 #include "../includes/calculator.h"
 
 int main() {
+    std::string expression;
+    std::getline(std::cin, expression);
+
     Calculator calc;
-    std::cout << calc.Evaluate("12.3") << std::endl; 
-    std::cout << calc.Evaluate("100.23") << std::endl; 
-    std::cout << calc.Evaluate("1400") << std::endl; 
-    std::cout << calc.Evaluate("1800.2") << std::endl; 
+    std::cout << std::setprecision(2) << std::fixed << calc.Evaluate(expression.c_str()) << std::endl; 
 
     return 0;
 }

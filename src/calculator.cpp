@@ -28,23 +28,6 @@ double Calculator::arithmetic(const double& a, const double& b, const char& op) 
     }
 }
 
-double Calculator::pow(const double& a, const double& n) const {
-    int raise = (int)(n + 0.5 - (n < 0));
-    double temp;
-    if (raise == 0)
-        return 1;
-    temp = pow(a, raise / 2);
-    if (raise % 2 == 0) {
-        return temp * temp;
-    }
-    else {
-        if (raise > 0)
-            return a * temp * temp;
-        else 
-            return (temp * temp) / a;
-    }
-}
-
 double Calculator::Evaluate(const char* expression) {
     Queue<double> numbers(100); // Stores all the numeric values
     Queue<char> ops(100);       // Stores all the operators
@@ -83,10 +66,41 @@ double Calculator::Evaluate(const char* expression) {
                 numbers.Enqueue(current_value);
             i--;
         }
-        // Given string is a negative number -1 {
+        // Given string is a negative number: -1 {
         else if (expression[i] == '-' && isdigit(expression[i + 1])) {
-            double current_value = 0;
+            for (int j = i; j >= 0; j--) {
+                if (expression[j] == ' ')
+                    continue;
+                else if (isdigit(expression[j])) {
+                    std::cout << "ERROR: Expression is invalid!" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                else {
+                    break;
+                }
+            }
 
+            i++;
+            double current_value = 0; // Loop till a non digit is reached
+            int decimal_place = 0;
+            while (i < strlen(expression) && (isdigit(expression[i]) || expression[i] == '.')) {
+                if (expression[i] != '.') {
+                    current_value = (current_value * 10.0) + (expression[i] - '0');
+                    i++;
+                    if (decimal_place > 0)
+                        decimal_place++;
+                }
+                else {
+                    decimal_place++;
+                    i++;
+                }
+            }
+
+            if (decimal_place != 0)
+                numbers.Enqueue(-1 * current_value / pow(10, decimal_place - 1));
+            else
+                numbers.Enqueue(-1 * current_value);
+            i--;
         }
         // Solve the entire bracket if a closing bracket is found
         else if (expression[i] == ')') {
