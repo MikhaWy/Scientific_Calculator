@@ -14,7 +14,10 @@
 
 int main() {
     Calculator calc;
-    std::cout << calc.Evaluate("(100 * ( 2 + 12 ))/ 13") << std::endl; 
+    std::cout << calc.Evaluate("12.3") << std::endl; 
+    std::cout << calc.Evaluate("100.23") << std::endl; 
+    std::cout << calc.Evaluate("1400") << std::endl; 
+    std::cout << calc.Evaluate("1800.2") << std::endl; 
 
     return 0;
 }
