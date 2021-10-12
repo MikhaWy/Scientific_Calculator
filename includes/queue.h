@@ -1,22 +1,26 @@
 #ifndef QUEUE_H 
 #define QUEUE_H 
 
-class QueueNode {
-public:
+class Queue {
+private:
     int front, rear, size;
     unsigned int capacity;
     int* array;
-};
-
-class Queue {
 public:
+    Queue(unsigned int capacity);
+    ~Queue();
     
-private:
-public:
-    Queue(unsigned int capacity) {
+    bool is_full() const;
+    bool is_empty() const;
 
-    }
+    void Enqueue(int item);
+    int Dequeue();
+    int Pop();
+
+    int Front() const;
+    int Rear() const;
 private:
+
 };
 
 #endif
