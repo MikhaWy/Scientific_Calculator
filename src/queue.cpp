@@ -20,7 +20,6 @@ Queue<T>::Queue(const unsigned int& capacity) {
 template<typename T>
 Queue<T>::~Queue() {
     free(this->array);
-    // std::cout << "Queue Destroyed!" << std::endl;
 }
 
 template<typename T>

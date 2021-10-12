@@ -21,11 +21,6 @@ int main() {
 
     Calculator calc;
     std::cout << std::setprecision(2) << std::fixed << calc.Evaluate(expression.c_str()) << std::endl;
-    
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "Hello, World!" << std::endl;
 
     return 0;
 }
