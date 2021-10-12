@@ -1,5 +1,5 @@
 /************************************************
- * Edrick, Mikha, Roger                          *
+ * Edrick, Mikha, Roger                         *
  * Data Structures and ALgorithm                *
  * Mr. Fikri                                    *
  *                                              *
@@ -12,9 +12,7 @@
 #include "../includes/linkedlist.h"
 
 int main() {
-    int x = 444, y = 44;
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << x << ", " << y << std::endl;
+    
 
     return 0;
 }
