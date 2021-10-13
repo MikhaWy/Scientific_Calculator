@@ -15,7 +15,7 @@ void Program::Init(){
     std::cin >> command;
 
     if (command == 1){
-        std::string expr;
+        std::string expr, ans, hist;
 
             while(true){
                 std::cout << "Enter an expression ('end' to terminate): " << std::endl;
@@ -23,7 +23,12 @@ void Program::Init(){
                 if(expr.compare("end") == 0){
                     break;
                 }
-                std::cout << this->calculator.Evaluate(expr.c_str()) << std::endl;
+
+                ans = std::to_string(this->calculator.Evaluate(expr.c_str()));
+                std::cout << ans << std::endl;
+                
+                hist = expr + " = " + ans;
+                this->history_list->Append(hist);
             }
 
     }
