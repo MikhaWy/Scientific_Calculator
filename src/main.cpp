@@ -13,6 +13,7 @@
 
 #include "../includes/queue.h"
 #include "../includes/linkedlist.h"
+#include "../includes/program.h"
 #include "../includes/calculator.h"
 
 int main() {

@@ -2,6 +2,8 @@
 #define CALCULATOR_H
 
 class Calculator {
+private:
+    double answer;
 public:
     double Evaluate(const char* expression);
 private:
