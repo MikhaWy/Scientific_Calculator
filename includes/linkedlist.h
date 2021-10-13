@@ -12,11 +12,13 @@ struct LLNode {
 class LinkedList {
     private:
         LLNode* head = NULL;
+        int size = 1;
 
     public:
         void Append(std::string history);
         void PrintList();
         void Delete();
+        int Size();
 };
 
 #endif

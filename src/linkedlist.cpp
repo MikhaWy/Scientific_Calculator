@@ -7,6 +7,7 @@ void LinkedList::Append(std::string history) {
 
     if (this->head == NULL){
         this->head = new_history;
+        this->size = this->size + 1;
         return;
     }
 
@@ -15,6 +16,7 @@ void LinkedList::Append(std::string history) {
         next_history = next_history->next;
     }
     next_history->next = new_history;
+    this->size = this->size + 1;
 }
 
 void LinkedList::Delete() {
@@ -28,6 +30,7 @@ void LinkedList::Delete() {
     }
 
     this->head = NULL;
+    this->size = 0;
 }
 
 void LinkedList::PrintList() {
@@ -41,4 +44,8 @@ void LinkedList::PrintList() {
         std::cout << current_node->history << std::endl;
         current_node = current_node->next;
     }
+}
+
+int LinkedList::Size() {
+    return this->size;
 }
