@@ -12,58 +12,62 @@ void Program::Init(){
     int command;
 
     while(true){
-    std::cin >> command;
+        std::cin >> command;
 
-    if (command == 1){
-        std::string expr, ans, hist;
+        if (command == 1){
+            std::string expr, ans, hist;
 
-            while(true){
-                std::cout << "Enter an expression ('end' to terminate): " << std::endl;
-                std::getline(std::cin, expr);
-                if(expr.compare("end") == 0){
-                    break;
+                while(true){
+                    std::cout << "Enter an expression ('end' to terminate): " << std::endl;
+                    std::getline(std::cin, expr);
+                    if(expr.compare("end") == 0){
+                        break;
+                    }
+
+                    ans = std::to_string(this->calculator.Evaluate(expr.c_str()));
+                    std::cout << ans << std::endl;
+                
+                    hist = expr + " = " + ans;
+                    this->history_list->Append(hist);
                 }
 
-                ans = std::to_string(this->calculator.Evaluate(expr.c_str()));
-                std::cout << ans << std::endl;
-                
-                hist = expr + " = " + ans;
-                this->history_list->Append(hist);
+        }
+        else if (command == 2){
+            int indicator;
+        
+            std::cout << "Choose between: (1) Degree Mode or (2) Radian Mode: ";
+            std::cin >> indicator;
+
+            if(indicator == 1){
+                this->calculator.SetMode(false);
+            }
+            else if(indicator == 2){
+                this->calculator.SetMode(true);
+            }
+            else{
+                std::cout << "Invalid input. Calculator is now set to Degree Mode" << std::endl;
+                this->calculator.SetMode(false);
             }
 
-    }
-    else if (command == 2){
-        int indicator;
-        
-        std::cout << "Choose between: (1) Degree Mode or (2) Radian Mode: ";
-        std::cin >> indicator;
-
-        if(indicator == 1){
+        }
+        else if (command == 3){
+            this->history_list->PrintList();
+        }
+        else if (command == 4){
+            this->history_list->Delete();
+        }
+        else if (command == 5){
             this->calculator.SetMode(false);
+            this->calculator.answer = 0;
+            this->history_list->Delete();
         }
-        else if(indicator == 2){
-            this->calculator.SetMode(true);
+        else if (command == 6){
+            break;
         }
-        else{
-            std::cout << "Invalid input. Calculator is now set to Degree Mode" << std::endl;
-            this->calculator.SetMode(false);
+        else {
+            std::cout << "Invalid Command." << std::endl;
+            continue;
         }
-
     }
-    else if (command == 3){
-        this->history_list->PrintList();
-    }
-    else if (command == 4){
-        this->history_list->Delete();
-    }
-    else if (command == 5){
-        this->calculator.SetMode(false);
-        this->calculator.answer = 0;
-        this->history_list->Delete();
-    }
-    else if (command == 6){
-        break;
-    }
-}
 
 }
