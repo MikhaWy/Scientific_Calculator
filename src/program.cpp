@@ -10,27 +10,26 @@ void Program::Init(){
     std::cout << "[6] Exit Program" << std::endl << std::endl;
 
     int command;
-
     while(true){
         std::cin >> command;
 
         if (command == 1){
             std::string expr, ans, hist;
+            
+            while(true){
+                std::cout << "Enter an expression ('end' to terminate): " << std::endl;
+                std::getline(std::cin, expr);
 
-                while(true){
-                    std::cout << "Enter an expression ('end' to terminate): " << std::endl;
-                    std::getline(std::cin, expr);
-                    if(expr.compare("end") == 0){
-                        break;
-                    }
-
-                    ans = std::to_string(this->calculator.Evaluate(expr.c_str()));
-                    std::cout << ans << std::endl;
-                
-                    hist = expr + " = " + ans;
-                    this->history_list->Append(hist);
+                if (expr.compare("end") == 0) {
+                    break;
                 }
-
+                
+                ans = std::to_string(this->calculator.Evaluate(expr.c_str()));
+                std::cout << ans << std::endl;
+            
+                hist = expr + " = " + ans;
+                this->history_list->Append(hist);
+            }
         }
         else if (command == 2){
             int indicator;
@@ -40,14 +39,14 @@ void Program::Init(){
 
             if(indicator == 1){
                 this->calculator.SetMode(false);
-                std::cout << "Calculator is now set to Degree Mode" << std::endl;
+                std::cout << "SUCCESS: Calculator is now set to Degree Mode." << std::endl;
             }
             else if(indicator == 2){
                 this->calculator.SetMode(true);
-                std::cout << "Calculator is now set to Radian Mode" << std::endl;
+                std::cout << "SUCCESS: Calculator is now set to Radian Mode." << std::endl;
             }
             else{
-                std::cout << "Invalid input. Calculator is now set to Degree Mode" << std::endl;
+                std::cout << "WARNING: Invalid input. Calculator is now set to Degree Mode." << std::endl;
                 this->calculator.SetMode(false);
             }
 
@@ -64,15 +63,14 @@ void Program::Init(){
             this->calculator.SetMode(false);
             this->calculator.answer = 0;
             this->history_list->Delete();
-            std::cout << "Calculator has been reset." << std::endl;
+            std::cout << "SUCCESS: Calculator has been reset." << std::endl;
         }
         else if (command == 6){
             break;
         }
         else {
-            std::cout << "Invalid command. Enter another command." << std::endl;
+            std::cout << "WARNING: Invalid command. Enter another command." << std::endl;
             continue;
         }
     }
-
 }
