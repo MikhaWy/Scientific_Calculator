@@ -35,7 +35,7 @@ double Calculator::exp_evaluate(const double& a, const char& op) const {
     switch (op) {
         // 's' is sin, 'c' is cos, 't' is tan
         case 's': if (this->radian_mode) return sin(a); // Radian mode
-                  else return sin(a * PI / 180);          // Deg mode (change deg to radian)
+                  else return sin(a * PI / 180);        // Deg mode (change deg to radian)
                   break;
         case 'c': if (this->radian_mode) return cos(a);
                   else return cos(a * PI / 180);

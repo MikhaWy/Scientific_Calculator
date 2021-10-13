@@ -19,7 +19,7 @@ void Program::Init(){
         if (command == 1){
             std::string expr, ans, hist;
 
-            std::cout << "Enter an expression ('end' to terminate): " << std::endl;
+            std::cout << "Enter an expression ('end' to terminate, 'ANS()' to use previous answer): " << std::endl;
             
             while(true){
                 //std::cout << "= ";
