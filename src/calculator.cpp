@@ -47,6 +47,7 @@ double Calculator::exp_evaluate(const double& a, const char& op) const {
         case 'e': return exp(a);            // Exp
         case 'l': return log10(a);          // Log base 10
         case 'n': return log(a);            // Log base n
+        case 'a': return this->answer;      // Answer of previous expression
         default:
             std::cout << "ERROR: Invalid syntax!" << std::endl;
             exit(EXIT_FAILURE);
@@ -100,6 +101,8 @@ char Calculator::strexp_code(const char* expression, int* i, double* numeric) {
         code = 'l';
     else if (str_command.compare("ln") == 0)
         code = 'n';
+    else if (str_command.compare("ANS") == 0)  // If user wants to evaluate previous answer
+        code = 'a';
     else
         code = '@'; // Returns a random char to throw an invalid syntax
     return code;
@@ -214,5 +217,6 @@ double Calculator::Evaluate(const char* expression) {
         numbers.Enqueue(arithmetic(number1, number2, op));
     }
 
+    this->answer = numbers.Rear();
     return numbers.Rear();
 }
