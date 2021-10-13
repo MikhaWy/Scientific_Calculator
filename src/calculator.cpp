@@ -25,7 +25,7 @@ double Calculator::arithmetic(const double& a, const double& b, const char& op) 
         case '^': return pow(a, b);
         default:
             std::cout << "ERROR: Invalid syntax!" << std::endl;
-            exit(EXIT_FAILURE);
+            return 0;
     }
 }
 
@@ -50,7 +50,7 @@ double Calculator::exp_evaluate(const double& a, const char& op) const {
         case 'a': return this->answer;      // Answer of previous expression
         default:
             std::cout << "ERROR: Invalid syntax!" << std::endl;
-            exit(EXIT_FAILURE);
+            return 0;
     }
 }
 

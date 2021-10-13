@@ -9,20 +9,18 @@ void Program::Init(){
     std::cout << "[5] Reset Calculator" << std::endl;
     std::cout << "[6] Exit Program" << std::endl << std::endl;
 
-    int command;
+    std::string command;
     while(true){
         std::cout << "Enter a Command: " << std::endl;
-        std::cin >> command;
-        std::cin.ignore();
+        std::getline(std::cin, command);
         std::cout << "----------------------------------" << std::endl;
 
-        if (command == 1){
+        if (command == "1"){
             std::string expr, ans, hist;
 
             std::cout << "Enter an expression ('end' to terminate, 'ANS()' to use previous answer): " << std::endl;
             
             while(true){
-                //std::cout << "= ";
                 std::getline(std::cin, expr);
 
                 if (expr.compare("end") == 0) {
@@ -38,18 +36,18 @@ void Program::Init(){
                 this->history_list->Append(hist);
             }
         }
-        else if (command == 2){
-            int indicator;
+        else if (command == "2"){
+            std::string indicator;
         
             std::cout << "Choose between: (1) Degree Mode or (2) Radian Mode: ";
-            std::cin >> indicator;
+            std::getline(std::cin, indicator);
 
-            if(indicator == 1){
+            if(indicator == "1"){
                 this->calculator.SetMode(false);
                 std::cout << "SUCCESS: Calculator is now set to Degree Mode." << std::endl;
                 std::cout << "----------------------------------" << std::endl;
             }
-            else if(indicator == 2){
+            else if(indicator == "2"){
                 this->calculator.SetMode(true);
                 std::cout << "SUCCESS: Calculator is now set to Radian Mode." << std::endl;
                 std::cout << "----------------------------------" << std::endl;
@@ -61,29 +59,28 @@ void Program::Init(){
             }
 
         }
-        else if (command == 3){
+        else if (command == "3"){
             std::cout << "Calculator history: " << std::endl;
             this->history_list->PrintList();
             std::cout << "----------------------------------" << std::endl;
         }
-        else if (command == 4){
+        else if (command == "4"){
             this->history_list->Delete();
             std::cout << "History deleted." << std::endl;
             std::cout << "----------------------------------" << std::endl;
         }
-        else if (command == 5){
+        else if (command == "5"){
             this->calculator.SetMode(false);
             this->calculator.answer = 0;
             this->history_list->Delete();
             std::cout << "SUCCESS: Calculator has been reset." << std::endl;
             std::cout << "----------------------------------" << std::endl;
         }
-        else if (command == 6){
+        else if (command == "6"){
             break;
         }
         else {
             std::cout << "WARNING: Invalid command. Enter another command." << std::endl;
-            continue;
         }
     }
 }
