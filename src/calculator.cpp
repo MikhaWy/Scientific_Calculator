@@ -21,7 +21,12 @@ double Calculator::arithmetic(const double& a, const double& b, const char& op) 
         case '+': return a + b;
         case '-': return a - b;
         case '*': return a * b;
-        case '/': return a / b;
+        case '/': 
+            if(b == 0){
+                std::cout << "ERROR: Division by Zero" << std::endl;
+                return 0;
+            }
+            return a / b;
         case '^': return pow(a, b);
         default:
             std::cout << "ERROR: Invalid syntax!" << std::endl;
@@ -40,9 +45,10 @@ double Calculator::exp_evaluate(const double& a, const char& op) const {
         case 'c': if (this->radian_mode) return cos(a);
                   else return cos(a * PI / 180);
                   break;
-        case 't': if (this->radian_mode) return tan(a);
-                  else return tan(a * PI / 180);
-                  break;
+        case 't': 
+            if (this->radian_mode) return tan(a);
+            else return tan(a * PI / 180);
+            break;
         case 'r': return pow(a, 0.5);       // Square root
         case 'e': return exp(a);            // Exp
         case 'l': return log10(a);          // Log base 10
