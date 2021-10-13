@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <cmath>
+#include <math.h>
 
 #include "../includes/calculator.h"
 #include "../includes/queue.h"
@@ -30,7 +31,7 @@ double Calculator::arithmetic(const double& a, const double& b, const char& op) 
 
 double Calculator::exp_evaluate(const double& a, const char& op) const {
     const double PI = 3.141592654;
-    
+
     switch (op) {
         // 's' is sin, 'c' is cos, 't' is tan
         case 's': return sin(a * PI / 180); // Change deg to radian
