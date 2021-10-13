@@ -46,7 +46,11 @@ double Calculator::exp_evaluate(const double& a, const char& op) const {
                   else return cos(a * PI / 180);
                   break;
         case 't': 
-            if (a == 90) {
+            if (!this->radian_mode && a == 90) {
+                std::cout << "ERROR: Division by Zero" << std::endl;
+                return 0;
+            }
+            else if (this->radian_mode && a == (PI / 2)) {
                 std::cout << "ERROR: Division by Zero" << std::endl;
                 return 0;
             }
