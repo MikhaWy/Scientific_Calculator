@@ -99,6 +99,10 @@ char Calculator::strexp_code(const char* expression, int* i, double* numeric) {
     return code;
 }
 
+void Calculator::SetMode(const bool& mode){
+    this->radian_mode = mode;
+}
+
 double Calculator::Evaluate(const char* expression) {
     Queue<double> numbers(100); // Stores all the numeric values
     Queue<char> ops(100);       // Stores all the operators

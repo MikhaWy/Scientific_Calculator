@@ -17,11 +17,8 @@
 #include "../includes/calculator.h"
 
 int main() {
-    std::string expression;
-    std::getline(std::cin, expression);
-
-    Calculator calc;
-    std::cout << std::setprecision(2) << std::fixed << calc.Evaluate(expression.c_str()) << std::endl;
+    Program program;
+    program.Init();
 
     return 0;
 }
