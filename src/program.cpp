@@ -40,9 +40,11 @@ void Program::Init(){
 
             if(indicator == 1){
                 this->calculator.SetMode(false);
+                std::cout << "Calculator is now set to Degree Mode" << std::endl;
             }
             else if(indicator == 2){
                 this->calculator.SetMode(true);
+                std::cout << "Calculator is now set to Radian Mode" << std::endl;
             }
             else{
                 std::cout << "Invalid input. Calculator is now set to Degree Mode" << std::endl;
@@ -51,21 +53,24 @@ void Program::Init(){
 
         }
         else if (command == 3){
+            std::cout << "Calculator history: " << std::endl;
             this->history_list->PrintList();
         }
         else if (command == 4){
             this->history_list->Delete();
+            std::cout << "History deleted." << std::endl;
         }
         else if (command == 5){
             this->calculator.SetMode(false);
             this->calculator.answer = 0;
             this->history_list->Delete();
+            std::cout << "Calculator has been reset." << std::endl;
         }
         else if (command == 6){
             break;
         }
         else {
-            std::cout << "Invalid Command." << std::endl;
+            std::cout << "Invalid command. Enter another command." << std::endl;
             continue;
         }
     }
