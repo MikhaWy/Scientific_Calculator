@@ -3,9 +3,12 @@
 
 class Calculator {
 private:
-    double answer;
+    bool radian_mode = false;
+public:
+    double answer = 0;
 public:
     double Evaluate(const char* expression);
+    void SetMode(const bool& mode);
 private:
     int precedence(const char& op) const;
     double arithmetic(const double& a, const double& b, const char& op) const;

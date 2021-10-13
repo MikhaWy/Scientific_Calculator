@@ -4,23 +4,14 @@
 #include <iostream>
 #include <string>
 #include "calculator.h"
+#include "linkedlist.h"
 
 class Program {
 private:
     Calculator calculator;
-    std::string expression;
-    bool radian_mode = false;
+    LinkedList* history_list;
 public:
     void Init();
-    void Clear();
-
-    void RadianMode();
-    void DegreeMode();
-
-    void AddHistory(const std::string& history);
-    void DeleteHistoryIndex(const int& index);
-    void DeleteHistory(const std::string& history);
-    void PrintHistory();
 };
 
 #endif
