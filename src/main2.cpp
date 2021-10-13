@@ -1,5 +1,6 @@
 #include <iostream>
-#include <string>
+#include <cstring>
+#include <cmath>
 
 struct LinkedList {
     std::string data;
@@ -30,6 +31,15 @@ void print_list(LinkedList* head) {
     }
 }
 
+void get_end_index(const std::string& expression, int* i, double* num) {
+    while (*i < expression.length() && expression[*i] != ')') {
+        std::cout << expression[*i] << std::endl;
+        (*i)++;
+    }
+    (*i)++;
+    *num = 10.2;    
+}
+
 int main() {
     LinkedList* head = NULL;
     append(&head, "Hello World!");
@@ -37,6 +47,19 @@ int main() {
     append(&head, "Hello World 2!");
 
     print_list(head);
+
+    std::cout << (double)1 / 10 << std::endl;
+
+    std::string test = "sin(10) + 10";
+    double num = 0;
+    for (int i = 0; i < test.length(); i++) {
+        if (isalpha(test[i])) {
+            get_end_index(test, &i, &num);
+            std::cout << test[i] << std::endl;
+        }
+    }
+
+    std::cout << num << std::endl;
 
     return 0;
 }
